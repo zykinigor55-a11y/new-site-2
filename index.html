@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fbfaf9">
+  <meta name="description" content="СВОИ43 — демоверсия городской бьюти-платформы Кирова: мастера, свободные окна, заявки рядом.">
+  <title>СВОИ43 — красота рядом</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <header class="brand-header">
+        <div class="brand-main">
+          <div class="brand-mark" aria-hidden="true">✳</div>
+          <div class="brand-text"><strong>СВОИ<span>43</span></strong><small>красота рядом</small></div>
+        </div>
+        <span class="demo-label"><span class="demo-dot"></span> ДЕМО</span>
+      </header>
+      <div class="role-zone">
+        <div class="role-switch" role="group" aria-label="Выберите режим">
+          <button class="role-choice active" type="button" data-action="role" data-value="client">♡ <span>Я клиентка</span></button>
+          <button class="role-choice" type="button" data-action="role" data-value="master">✦ <span>Я мастер</span></button>
+        </div>
+        <p id="roleIntro" class="role-intro">Находите мастеров, свободные окна и лучшие предложения рядом с вами.</p>
+      </div>
+      <nav class="tab-bar" id="tabBar" aria-label="Главная навигация"></nav>
+      <section class="panel-content" id="panelContent" aria-live="polite"></section>
+      <footer class="sidebar-footer">
+        <span>✦ С любовью к Кирову</span><span>Версия 0.1 · Прототип</span>
+      </footer>
+    </aside>
+    <main class="map-pane" id="mapPane">
+      <div class="map-stage" id="mapStage" aria-label="Интерактивная карта Кирова">
+        <svg id="mapFallback" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div id="tileLayer" class="tile-layer" aria-hidden="true"></div>
+        <div id="markerLayer" class="marker-layer"></div>
+        <div class="map-topbar">
+          <div class="city-pill"><span class="city-icon">⌖</span><span>Киров, Россия</span><span class="city-chevron">⌄</span></div>
+          <div class="map-top-right"><span class="mode-mini" id="mapModeLabel">Мастера рядом</span></div>
+        </div>
+        <div class="map-controls">
+          <button class="map-control" data-action="zoom-in" title="Увеличить" aria-label="Увеличить карту">+</button>
+          <button class="map-control" data-action="zoom-out" title="Уменьшить" aria-label="Уменьшить карту">−</button>
+          <button class="map-control locate-btn" data-action="locate" title="Моё местоположение" aria-label="Определить моё местоположение">◎</button>
+          <button class="map-control home-btn" data-action="recenter" title="Центр Кирова" aria-label="Вернуться к центру Кирова">⌂</button>
+        </div>
+        <div class="map-hint"><span class="hint-dot"></span><span id="mapHintText">Точки на карте — демонстрационные</span></div>
+        <div class="map-credit"><span id="mapCredit">Схематичная карта</span> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a></div>
+        <div class="floating-detail" id="floatingDetail" hidden></div>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-host" id="modalHost" hidden></div>
+  <script src="app.js" defer></script>
+  <script>if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));</script>
+</body>
+</html>
